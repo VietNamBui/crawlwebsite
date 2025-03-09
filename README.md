@@ -1,4 +1,6 @@
 # Project Overview
+![image](https://github.com/user-attachments/assets/cc7ef15f-c968-4b4f-b065-a2d753c7a368)
+
 This project is designed to collect, process, and display web data using Scrapy. The system is containerized with Docker for easy deployment and scalability.
 
 ## Technology
