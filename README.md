@@ -7,6 +7,7 @@ This project is designed to collect, process, and display web data using Scrapy.
 - **Redis**: Acts as a caching layer to optimize performance.
 - **Scrapy**: Used for web scraping.
 - **MongoDB**: Stores scraped data for long-term persistence.
+- **Docker**: Packaging and Deployment.
 
 ## Backend Components
 - **Scrapy**: Targets the Omega+ website to extract relevant data.
