@@ -9,8 +9,7 @@ This project is designed to collect, process, and display web data using Scrapy.
 - **MongoDB**: Stores scraped data for long-term persistence.
 - **Docker**: Packaging and Deployment.
 
-### How to Use This Project
-
+## How to Use This Project
 1. Install Docker Desktop.
 2. Clone this repository to your local machine.
 3. Run the `docker-compose` file.
