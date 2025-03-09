@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giá Sách</title>
+
+  <!-- Liên kết Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS tùy chỉnh -->
+  <style>
+    body {
+      background-color: #f5f5f5; /* Nền sáng */
+    }
+    .bookshelf {
+      display: flex;
+      flex-wrap: wrap; /* Gói sách xuống dòng nếu không đủ chỗ */
+      gap: 20px; /* Khoảng cách giữa các cuốn sách */
+      justify-content: center; /* Căn giữa nội dung giá sách */
+      padding: 30px;
+      margin: 0 auto;
+      max-width: 1200px; /* Độ rộng tối đa */
+    }
+    .book {
+        position: relative;
+        width: 100px; /* Chiều rộng của sách */
+        height: 160px; /* Chiều cao của sách */
+        background: linear-gradient(to right, #A0522D, #8B4513); /* Màu nâu gradient */
+        border-radius: 5px; /* Bo góc bìa sách */
+        box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.4); /* Bóng mờ */
+        display: flex;
+        align-items: center; /* Căn chỉnh nội dung theo chiều dọc */
+        justify-content: center; /* Căn giữa nội dung */
+        text-align: center; /* Văn bản căn giữa */
+        padding: 10px;
+        font-weight: bold;
+        color: #fff; /* Màu chữ nổi bật */
+        font-size: 10px; /* Giảm kích thước chữ */
+        text-transform: uppercase; /* Viết hoa tiêu đề */
+        transform: rotate(-2deg); /* Nghiêng nhẹ sách */
+        transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+
+        overflow: hidden; /* Giấu phần chữ bị tràn */
+        word-wrap: break-word; /* Tự xuống dòng nếu quá dài */
+    }
+    .book:hover {
+      transform: rotate(0deg) scale(1.1); /* Phóng to và dựng thẳng khi hover */
+      box-shadow: 6px 8px 16px rgba(0, 0, 0, 0.5); /* Tăng bóng khi hover */
+    }
+    .book::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: 5px; /* Vị trí hiệu ứng sáng */
+      width: 90%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.2); /* Ánh sáng mờ trên bề mặt */
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Container chính -->
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Giá Sách</h1>
+    <div id="bookshelf" class="bookshelf">
+      <!-- Các cuốn sách sẽ được thêm vào đây -->
+    </div>
+  </div>
+
+  <!-- Liên kết Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript -->
+  <script>
+    const bookshelf = document.getElementById('bookshelf');
+    const url = 'http://localhost:8000/data';
+
+    // Fetch dữ liệu từ API
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        return response.json(); // Chuyển đổi JSON
+      })
+      .then(data => {
+        const books = data["scrapy:book_urls"];
+        if (books && Array.isArray(books)) {
+          books.forEach(book => {
+            const bookDiv = document.createElement('div');
+            bookDiv.className = 'book'; // Tạo bìa sách
+            bookDiv.textContent = book; // Thêm tiêu đề sách
+            bookshelf.appendChild(bookDiv); // Thêm sách vào giá
+          });
+        } else {
+          console.error("Dữ liệu không chứa danh sách sách hoặc sai định dạng!");
+        }
+      })
+      .catch(error => {
+        console.error("Lỗi xảy ra:", error);
+        alert("Lỗi khi tải dữ liệu: " + error.message);
+      });
+  </script>
+</body>
+</html>
