@@ -1,28 +1,46 @@
-Project Overview
+# Project Overview
 This project is designed to collect, process, and display web data using Scrapy. The system is containerized with Docker for easy deployment and scalability.
-Technology
-Tech: Docker, JS, HTML, Python, Redis, Scrapy, MongoDB
-Backend Components
-•	Scrapy: Used for web scraping.
-•	MongoDB: Stores the scraped data for long-term persistence.
-•	Redis: Acts as a caching layer to optimize performance.
-•	API: Facilitates communication between the backend and frontend.
-Frontend Components
-•	Web UI: Displays the crawled data in an interactive interface.
-•	Docker: Manages the deployment and ensures portability.
-Backend Details
-Scrapy
-The scraping process targets the Omega+ website, extracting relevant data.
-Redis
-Scraped data is initially stored in Redis for caching before being moved to MongoDB for long-term storage.
-MongoDB
-MongoDB stores the structured data, making it easily retrievable for further processing. The data is saved as follows:
- 
-API
-The backend API serves the collected data in a structured format upon request. The data is saved as follows:
- 
-Frontend
-When accessing localhost:8080 in a web browser, the frontend presents the crawled data in a user-friendly interface.
- 
-This setup ensures an efficient, scalable, and maintainable web scraping and data visualization system.
 
+## Technology
+- **Docker**: Manages deployment and ensures portability.
+- **JavaScript, HTML, Python**: Core development languages.
+- **Redis**: Acts as a caching layer to optimize performance.
+- **Scrapy**: Used for web scraping.
+- **MongoDB**: Stores scraped data for long-term persistence.
+
+## Backend Components
+- **Scrapy**: Targets the Omega+ website to extract relevant data.
+- **Redis**: Temporarily caches scraped data before moving it to MongoDB.
+- **MongoDB**: Structured data storage for long-term retrieval.
+- **API**: Facilitates communication between the backend and frontend.
+
+## Frontend Components
+- **Web UI**: Displays crawled data in an interactive interface.
+- **Docker**: Ensures seamless deployment and scalability.
+
+## Backend Details
+
+### Scrapy
+The scraping process specifically targets the Omega+ website, extracting and collecting relevant data.
+
+### Redis
+Data scraped by Scrapy is initially stored in Redis for caching purposes to enhance system performance.
+
+### MongoDB
+Scraped data is then transferred from Redis and stored in MongoDB for long-term persistence. This structured data can be efficiently retrieved for additional processing.
+
+![image](https://github.com/user-attachments/assets/15cab9bd-8194-48e0-a038-3c12b6b41da9)
+
+### API
+The backend API provides access to the collected data in a structured format upon request.
+
+![image](https://github.com/user-attachments/assets/af464551-3016-46db-96e7-9e56c92183aa)
+
+## Frontend
+When accessing `localhost:8080` in a web browser, the frontend presents the crawled data in an interactive, user-friendly interface.
+
+![image](https://github.com/user-attachments/assets/f942d6eb-8c41-443a-bce2-0681553460a6)
+
+---
+
+This setup ensures an efficient, scalable, and maintainable web scraping and data visualization system.
